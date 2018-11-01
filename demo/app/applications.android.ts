@@ -1,6 +1,6 @@
 import { cleverTap } from "nativescript-clevertap";
 
-@JavaProxy("in.rowdyclub.Application")
+@JavaProxy("org.myApp.Application")
 class Application extends android.app.Application {
     public onCreate(): void {
         cleverTap.register();
