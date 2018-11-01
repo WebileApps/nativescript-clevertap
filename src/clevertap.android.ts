@@ -5,6 +5,7 @@ declare const com: any;
 const CleverTapSdk = com.clevertap.android.sdk;
 const CleverTapAPI = CleverTapSdk.CleverTapAPI;
 const HashMap = java.util.HashMap;
+const ArrayList = java.util.ArrayList;
 export class CleverTap extends Common {
   public register() {
     CleverTapSdk.ActivityLifecycleCallback.register(utils.ad.getApplication());
@@ -18,8 +19,20 @@ export class CleverTap extends Common {
     this.instance.pushProfile(getHashMap(profile));
   }
 
-  public pushEvent(event) {
-    this.instance.event.push(event);
+  public pushEvent(event, eventMeta) {
+    if (eventMeta) {
+      this.instance.event.push(event, getHashMap(eventMeta));
+    } else {
+      this.instance.event.push(event);
+    }
+  }
+
+  public pushChargedEvent(chargeDetails, items) {
+    this.instance.event.push(
+      CleverTapAPI.CHARGED_EVENT,
+      getHashMap(chargeDetails),
+      getArrayList(items)
+    );
   }
 
   public onUserLogin(profile) {
@@ -28,6 +41,14 @@ export class CleverTap extends Common {
 }
 
 export const cleverTap = new CleverTap();
+
+const getArrayList = items => {
+  const arrayList = new ArrayList();
+  items.forEach(item => {
+    arrayList.add(getHashMap(item));
+  });
+  return arrayList;
+};
 
 const getHashMap = ob => {
   const hashMap = new HashMap();
