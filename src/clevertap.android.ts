@@ -21,15 +21,14 @@ export class CleverTap extends Common {
 
   public pushEvent(event, eventMeta) {
     if (eventMeta) {
-      this.instance.event.push(event, getHashMap(eventMeta));
+      this.instance.pushEvent(event, getHashMap(eventMeta));
     } else {
-      this.instance.event.push(event);
+      this.instance.pushEvent(event);
     }
   }
 
   public pushChargedEvent(chargeDetails, items) {
-    this.instance.event.push(
-      CleverTapAPI.CHARGED_EVENT,
+    this.instance.pushChargedEvent(
       getHashMap(chargeDetails),
       getArrayList(items)
     );
