@@ -3,7 +3,9 @@ export interface CleverTap {
   
   updateProfile(profile);
 
-  pushEvent(event);
+  pushEvent(event, eventMeta);
+
+  pushChargedEvent(chargeDetails, items);
 
   onUserLogin(profile);
 }

@@ -19,9 +19,9 @@ export class CleverTap extends Common {
     this.instance.pushProfile(getHashMap(profile));
   }
 
-  public pushEvent(event, eventMeta) {
-    if (eventMeta) {
-      this.instance.pushEvent(event, getHashMap(eventMeta));
+  public pushEvent(event, eventData) {
+    if (eventData) {
+      this.instance.pushEvent(event, getHashMap(eventData));
     } else {
       this.instance.pushEvent(event);
     }
