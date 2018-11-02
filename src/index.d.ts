@@ -3,11 +3,13 @@ export interface CleverTap {
   
   updateProfile(profile);
 
-  pushEvent(event, eventMeta);
+  pushEvent(event: string, eventMeta : any);
 
-  pushChargedEvent(chargeDetails, items);
+  pushChargedEvent(chargeDetails : any, items : any[]);
 
   onUserLogin(profile);
+
+  profileGetProperty(propertyName : string);
 }
 
 export const cleverTap: CleverTap;

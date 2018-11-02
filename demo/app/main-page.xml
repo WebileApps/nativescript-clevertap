@@ -1,6 +1,11 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-clevertap">
   <StackLayout class="p-20">
+    <Label text="CleverTap + {N}" class="t-20 text-center c-black" textWrap="true"/>
     <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Login" class="t-20 text-center c-black" textWrap="true" onTap="{{onLoginTapped}}" />
+    <Button text="Push Event" class="t-20 text-center c-black" textWrap="true" onTap="{{onPushEventTapped}}" />
+    <Button text="Push Charge Event" class="t-20 text-center c-black" textWrap="true" onTap="{{onPushChargedEventTapped}}" />
+    <Button text="Update Profile" class="t-20 text-center c-black" textWrap="true" onTap="{{onGetUserIdTapped}}" />
   </StackLayout>
 </Page>
