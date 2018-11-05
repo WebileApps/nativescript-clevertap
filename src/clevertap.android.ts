@@ -88,7 +88,7 @@ function isString(value) {
 }
 
 function isObject(value) {
-  return typeof value === "object";
+  return !isDate(value) && typeof value === "object";
 }
 
 // Taken from https://stackoverflow.com/a/20779354/4694010
