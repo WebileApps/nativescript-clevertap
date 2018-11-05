@@ -10,6 +10,17 @@ Add the following to your `Info.plist`.  under `app/App_Resources/iOS`
 	<key>CleverTapToken</key>
 	<string>YOUR-TEST-TOKEN</string>
 ```
+### Android
+Add the following to your `AndroidManifestxml`.  under `app/App_Resources/Android/src/main`
+```
+	<meta-data
+		android:name="CLEVERTAP_ACCOUNT_ID"
+		android:value="YOUR-TEST-ACCOUNTID>"/>
+
+	<meta-data
+		android:name="CLEVERTAP_TOKEN"
+		android:value="YOUR-TEST-TOKEN"/>
+```
 
 ## Additional Resources
 - [CleverTap Android SDK Integration guide](https://support.clevertap.com/docs/android/getting-started.html)

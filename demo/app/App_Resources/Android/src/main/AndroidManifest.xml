@@ -27,11 +27,11 @@
 
 		<meta-data
 			android:name="CLEVERTAP_ACCOUNT_ID"
-			android:value="Your Clevertap AccountId>"/>
+			android:value="YOUR-TEST-ACCOUNTID>"/>
 
 		<meta-data
 			android:name="CLEVERTAP_TOKEN"
-			android:value="Your Clevertap Token>"/>
+			android:value="YOUR-TEST-TOKEN"/>
 
 		<activity
 			android:name="com.tns.NativeScriptActivity"
