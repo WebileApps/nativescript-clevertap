@@ -15,8 +15,8 @@ export class CleverTapImpl extends Common implements CleverTapInterface {
 
     register() {
         throw new Error("Method not implemented.");
-    }    
-    
+    }
+
     updateProfile(profile: any) {
         CleverTap.sharedInstance().profilePush(profile);
     }
@@ -24,16 +24,16 @@ export class CleverTapImpl extends Common implements CleverTapInterface {
     pushEvent(event: string, eventMeta: any) {
         CleverTap.sharedInstance().recordEventWithProps(event, eventMeta);
     }
-    
+
     pushChargedEvent(chargeDetails: any, items: any) {
-        throw new Error("Method not implemented.");
+        CleverTap.sharedInstance().recordChargedEventWithDetailsAndItems(chargeDetails, items);
     }
-    
+
     onUserLogin(profile: any) {
         CleverTap.sharedInstance().onUserLogin(profile);
     }
 
-    profileGetProperty(propertyName : string) {
+    profileGetProperty(propertyName: string) {
         return CleverTap.sharedInstance().profileGet(propertyName);
     }
 }

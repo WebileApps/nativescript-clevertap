@@ -8,11 +8,11 @@ const CleverTapAPI = CleverTapSdk.CleverTapAPI;
 const HashMap = java.util.HashMap;
 const ArrayList = java.util.ArrayList;
 export class CleverTap extends Common implements CleverTapInterface {
-  
+
   profileGetProperty(propertyName: string) {
     return this.instance.getProperty(propertyName);
   }
-  
+
   public register() {
     CleverTapSdk.ActivityLifecycleCallback.register(utils.ad.getApplication());
   }
