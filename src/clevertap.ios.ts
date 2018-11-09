@@ -53,6 +53,10 @@ export class CleverTapImpl extends Common implements CleverTapInterface {
   public handleMessage(message): boolean {
     throw new Error("Method not implemented.");
   }
+
+  public createNotificationChannel() {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export const cleverTap = new CleverTapImpl();

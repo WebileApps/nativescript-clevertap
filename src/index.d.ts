@@ -16,6 +16,8 @@ export interface CleverTap {
   pushFcmRegistrationId(fcmRegId);
 
   handleMessage(message): boolean;
+
+  createNotificationChannel({ channelId, name, description, importance, showBadge });
 }
 
 export const cleverTap: CleverTap;

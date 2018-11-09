@@ -22,6 +22,23 @@ export class CleverTap extends Common implements CleverTapInterface {
     return CleverTapAPI.getDefaultInstance(utils.ad.getApplicationContext());
   }
 
+  public createNotificationChannel({
+    channelId = "Clevertap",
+    name = "Clevertap",
+    description = "Clevertap",
+    importance = 5,
+    showBadge = true
+  }) {
+    CleverTapAPI.createNotificationChannel(
+      utils.ad.getApplicationContext(),
+      channelId,
+      name,
+      description,
+      importance,
+      showBadge
+    );
+  }
+
   public updateProfile(profile) {
     this.instance.pushProfile(getHashMap(profile));
   }
