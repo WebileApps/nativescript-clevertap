@@ -23,3 +23,5 @@ publish/src
 publish/package
 demo/report/report.html
 demo/report/stats.json
+src/platforms/android/nativescript_clevertap.aar
+publish/package-lock.json
