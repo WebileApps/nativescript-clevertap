@@ -10,6 +10,12 @@ export interface CleverTap {
   onUserLogin(profile);
 
   profileGetProperty(propertyName : string);
+
+  setLocation(): Promise<void>;
+
+  pushFcmRegistrationId(fcmRegId);
+
+  handleMessage(message): boolean;
 }
 
 export const cleverTap: CleverTap;

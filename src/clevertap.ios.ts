@@ -1,41 +1,58 @@
-import { Common } from './clevertap.common';
+import { Common } from "./clevertap.common";
 import { CleverTap as CleverTapInterface } from "./";
-import { on as onApplicationEvent, launchEvent } from "tns-core-modules/application";
+import {
+  on as onApplicationEvent,
+  launchEvent
+} from "tns-core-modules/application";
 
 declare const CleverTap;
 
 export class CleverTapImpl extends Common implements CleverTapInterface {
+  constructor() {
+    super();
+    onApplicationEvent(launchEvent, args => {
+      CleverTap.autoIntegrate();
+    });
+  }
 
-    constructor() {
-        super();
-        onApplicationEvent(launchEvent, (args) => {
-            CleverTap.autoIntegrate();
-        });
-    }
+  register() {
+    throw new Error("Method not implemented.");
+  }
 
-    register() {
-        throw new Error("Method not implemented.");
-    }
+  updateProfile(profile: any) {
+    CleverTap.sharedInstance().profilePush(profile);
+  }
 
-    updateProfile(profile: any) {
-        CleverTap.sharedInstance().profilePush(profile);
-    }
+  pushEvent(event: string, eventMeta: any) {
+    CleverTap.sharedInstance().recordEventWithProps(event, eventMeta);
+  }
 
-    pushEvent(event: string, eventMeta: any) {
-        CleverTap.sharedInstance().recordEventWithProps(event, eventMeta);
-    }
+  pushChargedEvent(chargeDetails: any, items: any) {
+    CleverTap.sharedInstance().recordChargedEventWithDetailsAndItems(
+      chargeDetails,
+      items
+    );
+  }
 
-    pushChargedEvent(chargeDetails: any, items: any) {
-        CleverTap.sharedInstance().recordChargedEventWithDetailsAndItems(chargeDetails, items);
-    }
+  onUserLogin(profile: any) {
+    CleverTap.sharedInstance().onUserLogin(profile);
+  }
 
-    onUserLogin(profile: any) {
-        CleverTap.sharedInstance().onUserLogin(profile);
-    }
+  profileGetProperty(propertyName: string) {
+    return CleverTap.sharedInstance().profileGet(propertyName);
+  }
 
-    profileGetProperty(propertyName: string) {
-        return CleverTap.sharedInstance().profileGet(propertyName);
-    }
+  public async setLocation() {
+    throw new Error("Method not implemented.");
+  }
+
+  public pushFcmRegistrationId(fcmRegId) {
+    throw new Error("Method not implemented.");
+  }
+
+  public handleMessage(message): boolean {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export const cleverTap = new CleverTapImpl();

@@ -1,14 +1,15 @@
 import { Common } from "./clevertap.common";
 import { CleverTap as CleverTapInterface } from "./";
 import * as utils from "tns-core-modules/utils/utils";
+import { enableLocation } from "./location-utils";
 
 declare const com: any;
 const CleverTapSdk = com.clevertap.android.sdk;
 const CleverTapAPI = CleverTapSdk.CleverTapAPI;
 const HashMap = java.util.HashMap;
 const ArrayList = java.util.ArrayList;
-export class CleverTap extends Common implements CleverTapInterface {
 
+export class CleverTap extends Common implements CleverTapInterface {
   profileGetProperty(propertyName: string) {
     return this.instance.getProperty(propertyName);
   }
@@ -42,6 +43,32 @@ export class CleverTap extends Common implements CleverTapInterface {
 
   public onUserLogin(profile) {
     this.instance.onUserLogin(getHashMap(profile));
+  }
+
+  public async setLocation() {
+    try {
+      await enableLocation();
+      this.instance.setLocation(this.instance.getLocation());
+    } catch (error) {
+      console.log("Error ", error);
+    }
+  }
+
+  public pushFcmRegistrationId(fcmRegId) {
+    this.instance.pushFcmRegistrationId(fcmRegId, true);
+  }
+
+  public handleMessage(message): boolean {
+    const extras = new android.os.Bundle();
+    Object.keys(message).forEach(key => {
+      extras.putString(key, message[key]);
+    });
+    const info = CleverTapAPI.getNotificationInfo(extras);
+    if (info.fromCleverTap) {
+      CleverTapAPI.createNotification(utils.ad.getApplicationContext(), extras);
+      return true;
+    }
+    return false;
   }
 }
 

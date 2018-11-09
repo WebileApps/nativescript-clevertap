@@ -5,6 +5,26 @@
 		To read more about android permissions go to https://developer.android.com/guide/topics/permissions/index.html -->
 	<!--EXAMPLE: uses-permission android:name="android.permission.INTERNET"/> -->
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+	<application>
+
+		<receiver android:name="com.clevertap.android.sdk.CTPushNotificationReceiver" android:exported="false" android:enabled="true">
+		</receiver>
+
+		<service android:name="com.clevertap.android.sdk.CTNotificationIntentService" android:exported="false">
+			<intent-filter>
+				<action android:name="com.clevertap.PUSH_EVENT"/>
+			</intent-filter>
+		</service>
+		
+		<receiver android:name="com.clevertap.android.sdk.InstallReferrerBroadcastReceiver" android:exported="true">
+			<intent-filter>
+				<action android:name="com.android.vending.INSTALL_REFERRER"/>
+			</intent-filter>
+		</receiver>
+
+		<activity android:name="com.clevertap.android.sdk.InAppNotificationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="orientation|keyboardHidden"/>
+	</application>
 </manifest>
