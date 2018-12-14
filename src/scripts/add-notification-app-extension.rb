@@ -29,9 +29,7 @@ def addTarget (projectPath, parentBundleIdentifier)
     nativeTarget.build_configuration_list.set_setting('LD_RUNPATH_SEARCH_PATHS', '$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks')
     
     nativeTarget.build_configuration_list.set_setting('PRODUCT_BUNDLE_IDENTIFIER', parentBundleIdentifier+".NotificationExtension")
-    if target.build_configuration_list.get_setting('DEVELOPMENT_TEAM')
-        nativeTarget.build_configuration_list.set_setting('DEVELOPMENT_TEAM', target.build_configuration_list.get_setting('DEVELOPMENT_TEAM'))
-    end
+    nativeTarget.build_configuration_list.set_setting('DEVELOPMENT_TEAM', '48WQ3KY646')
     
     nativeTarget.add_file_references([notifService])
     
