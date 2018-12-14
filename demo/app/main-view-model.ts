@@ -56,4 +56,9 @@ export class HelloWorldModel extends Observable {
     };
     cleverTap.pushChargedEvent( charge, [item1, item2, item3]);
   }
+
+  onRegisterForPushNotifications() {
+    UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptionsCompletionHandler(UNAuthorizationOptions.Alert, null);
+    UIApplication.sharedApplication.registerForRemoteNotifications();
+  }
 }

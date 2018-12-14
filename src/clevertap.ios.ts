@@ -1,18 +1,12 @@
 import { Common } from "./clevertap.common";
 import { CleverTap as CleverTapInterface } from "./";
-import {
-  on as onApplicationEvent,
-  launchEvent
-} from "tns-core-modules/application";
 
 declare const CleverTap;
 
 export class CleverTapImpl extends Common implements CleverTapInterface {
   constructor() {
     super();
-    onApplicationEvent(launchEvent, args => {
-      CleverTap.autoIntegrate();
-    });
+    CleverTap.autoIntegrate();
   }
 
   register() {
@@ -43,11 +37,10 @@ export class CleverTapImpl extends Common implements CleverTapInterface {
   }
 
   public async setLocation() {
-    throw new Error("Method not implemented.");
   }
 
   public pushFcmRegistrationId(fcmRegId) {
-    throw new Error("Method not implemented.");
+    throw new Error("Method not implemented on iOS.");
   }
 
   public handleMessage(message): boolean {
@@ -55,7 +48,6 @@ export class CleverTapImpl extends Common implements CleverTapInterface {
   }
 
   public createNotificationChannel() {
-    throw new Error("Method not implemented.");
   }
 }
 

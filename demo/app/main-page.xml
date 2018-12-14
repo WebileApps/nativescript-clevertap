@@ -7,5 +7,6 @@
     <Button text="Push Event" class="t-20 text-center c-black" textWrap="true" onTap="{{onPushEventTapped}}" />
     <Button text="Push Charge Event" class="t-20 text-center c-black" textWrap="true" onTap="{{onPushChargedEventTapped}}" />
     <Button text="Update Profile" class="t-20 text-center c-black" textWrap="true" onTap="{{onGetUserIdTapped}}" />
+    <Button text="Register For Push (iOS)" class="t-20 text-center c-black" textWrap="true" onTap="{{onRegisterForPushNotifications}}" />
   </StackLayout>
 </Page>
