@@ -1,7 +1,6 @@
 import { Common } from "./clevertap.common";
 import { CleverTap as CleverTapInterface } from "./";
 import * as utils from "tns-core-modules/utils/utils";
-import { enableLocation } from "./location-utils";
 
 declare const com: any;
 const CleverTapSdk = com.clevertap.android.sdk;
@@ -63,12 +62,12 @@ export class CleverTap extends Common implements CleverTapInterface {
   }
 
   public async setLocation() {
-    try {
-      await enableLocation();
-      this.instance.setLocation(this.instance.getLocation());
-    } catch (error) {
-      console.log("Error ", error);
-    }
+    // try {
+    //   await enableLocation();
+    //   this.instance.setLocation(this.instance.getLocation());
+    // } catch (error) {
+    //   console.log("Error ", error);
+    // }
   }
 
   public pushFcmRegistrationId(fcmRegId) {
