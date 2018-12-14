@@ -1,12 +1,18 @@
 import { Common } from "./clevertap.common";
 import { CleverTap as CleverTapInterface } from "./";
+import {	
+  on as onApplicationEvent,	
+  launchEvent	
+} from "tns-core-modules/application";
 
 declare const CleverTap;
 
 export class CleverTapImpl extends Common implements CleverTapInterface {
   constructor() {
     super();
-    CleverTap.autoIntegrate();
+    onApplicationEvent(launchEvent, args => {	    CleverTap.autoIntegrate();
+      CleverTap.autoIntegrate();	
+    });
   }
 
   register() {
