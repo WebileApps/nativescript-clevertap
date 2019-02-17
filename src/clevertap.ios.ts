@@ -10,9 +10,7 @@ declare const CleverTap;
 export class CleverTapImpl extends Common implements CleverTapInterface {
   constructor() {
     super();
-    onApplicationEvent(launchEvent, args => {	    CleverTap.autoIntegrate();
-      CleverTap.autoIntegrate();	
-    });
+    CleverTap.autoIntegrate();	
   }
 
   register() {
